@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import * as SVG from 'components/SVGIcons'
+import Image from 'next/image'
 
 interface VotePillProps {
   image?: string
@@ -11,8 +11,13 @@ export const VoteCode = ({ image, title }: VotePillProps) => {
   return (
     <button className="pointer group">
       <div className="flex flex-col items-center">
-        <figure className="flex object-contain w-full">
-          <img className="object-contain w-full" alt={title} src={image} />
+        <figure className="relative flex object-contain w-full">
+          <Image
+            className="object-contain w-full"
+            alt={title}
+            src={image ?? ''}
+            layout="fill"
+          />
         </figure>
         <div className="text-2xl font-semibold text-gray-700">{title}</div>
       </div>
